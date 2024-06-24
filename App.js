@@ -1,4 +1,4 @@
-import { View, ActivityIndicator } from "react-native";
+import { View, Alert, Button } from "react-native";
 
 export default function App() {
   return <View style={{
@@ -6,10 +6,32 @@ export default function App() {
     backgroundColor: "plum",
     padding: 50,
   }}>
-    <ActivityIndicator />
-    <ActivityIndicator size={"large"} />
-    <ActivityIndicator size={"large"} color={"red"} />
-    <ActivityIndicator size={"large"} color={"white"} animating={false} />
+    <Button title="Alert" onPress={() => {
+      Alert.alert("Invalid data alert!!!")
+    }}>
+    </Button>
+
+    <Button title="Alert w a message" onPress={() => {
+      Alert.alert("Warning!!!", "Additional info: you did something horrible and now you are going to pay :).")
+    }}>
+    </Button>
+
+    <Button title="Alert w 2 buttons" onPress={() => {
+      Alert.alert("Invalid data alert!!!", "Additional msg", [
+        {
+          text: 'Cancel opt',
+          onPress: () => {
+            console.log("Cancel pressed.")
+          }
+        },
+        {
+          text: 'Ok opt',
+          onPress: () => {
+            console.log("Ok pressed.")
+          }
+        }
+      ])
+    }}></Button>
   </View>;
 }
 
