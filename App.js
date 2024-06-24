@@ -1,7 +1,11 @@
-import { Button, View, Image, Pressable, Text } from "react-native";
+import { Button, View, Image, Pressable, Text, Modal } from "react-native";
+import { useState } from "react";
+
 const logoImg = require("./assets/adaptive-icon.png")
 
 export default function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   return <View style={{
     flex: 1, // flex to take up all the available screen
     backgroundColor: "plum",
@@ -9,7 +13,6 @@ export default function App() {
   }}>
     <Button
       title="Press ME"
-      color={"green"}
       onPress={(event) => {
         console.log("Button pressed")
         console.log(event.target.title)
@@ -30,8 +33,51 @@ export default function App() {
     <Pressable onPress={() => {
       console.log("Text pressed!");
     }}>
-      <Text>Pressable text here</Text>
+      <Text
+        style={{
+          fontSize: 20,
+          textAlign: "center",
+          backgroundColor: '#1E6738',
+          color: "white",
+          padding: 20,
+        }}
+        onPress={() => {
+          setIsModalVisible(true);
+          console.log("opening modeal");
+        }}>
+        Pressable text here - opens modal
+      </Text>
     </Pressable>
+
+    <Modal
+      visible={isModalVisible}
+      onRequestClose={() => { // closes the modal if the user uses the back button on Android/closing gesture on iOS
+        setIsModalVisible(false);
+      }}
+      animationType="slide" //or fade
+      presentationStyle="formSheet" //set to 'fullscreen' by default, other: "formSheet"
+    >
+
+      <View style={{
+        flex: 1, // flex to take up all the available screen
+        backgroundColor: "lightblue",
+        padding: 50,
+      }}>
+        <Text>
+          Modal content.
+          Modal content.
+          Modal content.
+          Modal content.
+        </Text>
+        <Button
+          title="Close this modal"
+          color="midnightblue"
+          onPress={() => {
+            setIsModalVisible(false);
+            console.log("closing modal");
+          }} />
+      </View>
+    </Modal>
 
   </View>;
 }
