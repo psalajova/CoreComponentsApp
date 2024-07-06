@@ -24,10 +24,18 @@ const styles = StyleSheet.create({
   box: {
     width: "100%", // stretch to fill all available horizontal space
     height: 100,
-    padding: 10,
+    //padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
     marginBottom: 20,
     alignItems: 'center',     //center text horizontally
     justifyContent: 'center', //center text vertically
+    //border:
+    borderWidth: 2,
+    borderStyle: "dotted",
+    borderColor: "#16243b",
+    borderRadius: 10, //only applies to View - when applied to Text, doesn't show on iOS, only Android
+
   },
   blueBg: {
     backgroundColor: "lightblue",
