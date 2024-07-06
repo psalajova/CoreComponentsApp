@@ -3,6 +3,15 @@ import { View, Text, StyleSheet } from "react-native"
 export default function App() {
   return (
     <View style={styles.container}>
+      <View style={[styles.box, styles.darkMode]}>
+        <Text style={styles.darkModeText}>
+          Style inheritance!
+          <Text style={styles.boldText}>
+            Bold text.
+          </Text>
+        </Text>
+      </View>
+
       <View style={[styles.box, styles.blueBg, styles.boxShadow]}>
         <Text style={styles.cellText}>StyleSheet API</Text>
       </View>
@@ -20,6 +29,15 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     padding: 60,
     alignItems: 'center',
+  },
+  darkMode: { // Text components dont inherit styles from View components
+    backgroundColor: "black",
+  },
+  darkModeText: {
+    color: "white",
+  },
+  boldText: { // styles are inherited between Text components
+    fontWeight: "bold",
   },
   box: {
     width: "100%", // stretch to fill all available horizontal space
@@ -39,6 +57,7 @@ const styles = StyleSheet.create({
   },
   blueBg: {
     backgroundColor: "#c7e0f2",
+    color: "white",
   },
   peachBg: {
     backgroundColor: "#d1a699",
